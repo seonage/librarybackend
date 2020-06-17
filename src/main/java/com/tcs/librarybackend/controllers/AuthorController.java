@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+
+
 import com.tcs.librarybackend.repos.AuthorRepo;
 import com.tcs.librarybackend.models.Author;
 import com.tcs.librarybackend.exceptions.ResourceNotFoundException;
@@ -27,6 +29,7 @@ public class AuthorController {
 
     @GetMapping
     public List<Author> getAuthors() {
+        System.out.println("Get authors");
         return authorRepo.findAll();
     }
 
@@ -37,6 +40,7 @@ public class AuthorController {
 
     @PostMapping
     public void addAuthor(@RequestBody Author author) {
+        System.out.println("Author Added");
         authorRepo.save(author);
     }
 
@@ -44,6 +48,7 @@ public class AuthorController {
     @ResponseStatus(code = HttpStatus.ACCEPTED)
     public void deleteAuthor(@PathVariable String id) {
         Author author = authorRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException());
+        System.out.println("author deleted");
         authorRepo.delete(author);
     }
 
