@@ -7,6 +7,10 @@ public class Author {
     private String firstName;
     private String lastName;
 
+    public String getId() {
+        return id;
+    }
+
     public String getFirstName() {
         return firstName;
     }
